@@ -22,8 +22,12 @@ public:
 		Node *head = NULL;
 	}
 	Node *CreateNode();
+	void InsertNode();
 	void InsertAtFront();
 	void InsertAtEnd();
+	void AddAfter();
+	void AddBefore();
+	void Delete();
 	void Print();
 	void Reverse();
 };
@@ -36,11 +40,12 @@ int main()
 	while (1)
 	{
 		cout << "Linked List Operations " << endl;
-		cout << "1. Insert a node at front" << endl;
-		cout << "2. Insert a node at end" << endl;
-		cout << "3. Print the List" << endl;
-		cout << "4. Reverse the List" << endl;
-		cout << "5. Exit " << endl;
+		cout << "1. Insert a node" << endl;
+		cout << "2. Insert a node at front" << endl;
+		cout << "3. Insert a node at end" << endl;
+		cout << "4. Print the List" << endl;
+		cout << "5. Reverse the List" << endl;
+		cout << "6. Exit " << endl;
 		cout << "Enter your choice" << endl;
 		cin >> choice;
 
@@ -61,7 +66,7 @@ int main()
 			break;
 		}
 	}
-    return 0;
+	return 0;
 }
 
 Node * DoubleLinkedList::CreateNode()
@@ -75,6 +80,19 @@ Node * DoubleLinkedList::CreateNode()
 	return newNode;
 }
 
+void DoubleLinkedList::InsertNode()
+{
+	Node* nodeAdd = CreateNode();
+	if (head == NULL)
+	{
+		head = nodeAdd;
+	}
+	else  // If list is not empty then add the node in the front of te list.
+	{
+		InsertAtFront();
+	}
+}
+
 void DoubleLinkedList::InsertAtFront()
 {
 	struct Node *nodeFront = CreateNode();
@@ -82,7 +100,7 @@ void DoubleLinkedList::InsertAtFront()
 	{
 		head = nodeFront;
 		return;
-	} 
+	}
 	head->prev = nodeFront;
 	nodeFront->next = head;
 	head = nodeFront;
@@ -98,8 +116,8 @@ void DoubleLinkedList::InsertAtEnd()
 	}
 	cout << endl;
 	struct Node *nodeLast = CreateNode();
-	nodeLast->prev = temp->next;
 	nodeLast->next = NULL;
+	nodeLast->prev = temp->next;	
 }
 
 void DoubleLinkedList::Print()
@@ -111,9 +129,7 @@ void DoubleLinkedList::Print()
 		cout << temp->data << " ";
 		temp = temp->next;
 	}
-	cout << endl; 
-
-
+	cout << endl;
 }
 
 void DoubleLinkedList::Reverse()
@@ -127,4 +143,9 @@ void DoubleLinkedList::Reverse()
 		cout << temp->data << " ";
 		temp = temp->next;
 	}
+}
+
+void DoubleLinkedList::AddAfter()
+{
+
 }
