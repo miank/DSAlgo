@@ -26,3 +26,9 @@
 *.exe
 *.out
 *.app
+*.txt
+*.filters
+*.opendb
+BinarySearchTree/.vs/BinarySearchTree/v15/Browse.VC.db
+*.suo
+*.ipch
