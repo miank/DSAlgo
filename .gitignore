@@ -37,3 +37,10 @@ BinarySearchTree/.vs/BinarySearchTree/v15/Browse.VC.db
 *.tlog
 BinarySearchTree/Debug/Traversal.ilk
 *.log
+*.sln
+*.ilk
+*.vcxproj
+*.db
+*stdafx.cpp
+*stdafx.h
+*targetver.h
