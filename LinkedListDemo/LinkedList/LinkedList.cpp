@@ -21,8 +21,22 @@ public:
 	void DeleteNode();
 	void LengthOfList();
 	void DeleteNodeAtEnd();
-	//void ReverseList();
+	void ReverseList();
 };
+
+void LinkedList::ReverseList()
+{
+	node *current = nullptr, *next = nullptr, *prev = nullptr;
+	current = start;
+	while (current != nullptr)
+	{
+		next = current->link;
+		current->link = prev;
+		prev = current;
+		current = next;
+	}
+	start = prev;
+}
 
 void LinkedList::DeleteNodeAtEnd()
 {
@@ -182,10 +196,10 @@ int main()
 		cout << "4. Length of Linked List" << endl;
 		cout << "5. Delete a node based on value" << endl;
 		cout << "6. Delete a node at end" << endl;
+		cout << "7. Reverse a linked list" << endl;
 		cout << "8. Exit " << endl;
 		cout << "Enter your choice" << endl;
 		cin >> choice;
-
 
 		switch (choice)
 		{
@@ -200,6 +214,8 @@ int main()
 		case 5:objList.DeleteNode();
 			break;
 		case 6:objList.DeleteNodeAtEnd();
+			break;
+		case 7:objList.ReverseList();
 			break;
 		case 8: exit(0);
 			break;
