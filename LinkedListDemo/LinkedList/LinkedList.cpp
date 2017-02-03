@@ -1,4 +1,4 @@
-// LinkedList.cpp : Defines the entry point for the console application.
+// LinkedList.cpp : All linkedlist operations
 //
 
 #include "stdafx.h"
@@ -18,9 +18,84 @@ public:
 	void InsertFront();
 	void InsertEnd();
 	void DisplayList();
-	//void LengthOfList();
+	void DeleteNode();
+	void LengthOfList();
+	void DeleteNodeAtEnd();
 	//void ReverseList();
 };
+
+void LinkedList::DeleteNodeAtEnd()
+{
+	if (start == nullptr)
+	{
+		cout << "List is empty " << endl;
+		return;
+	}
+	node *temp = start;
+	node *prev;
+	while (temp->link != nullptr)
+	{
+		prev = temp; // Keeping the back of previous node
+		temp = temp->link;
+	}
+	delete temp;
+	prev->link = nullptr;
+}
+
+void LinkedList::LengthOfList()
+{
+	int count = 0;
+	node *temp = NULL;
+	if (start == NULL)
+	{
+		cout << "List is empty" << endl;
+		return;
+	}
+	else
+	{
+		temp = start;
+		while (temp != NULL)
+		{
+			temp = temp->link;
+			count++;
+		}
+		cout << count << endl;
+
+	}
+}
+
+void LinkedList::DeleteNode()
+{
+	node *temp = nullptr;
+	int value;
+	cout << "Enter the value to be deleted " << endl;
+	cin >> value;
+
+	if (start == nullptr)
+	{
+		cout << "List is empty " << endl;
+		return;
+	}
+	if (start->data == value)
+	{
+		temp = start->link;
+		cout << temp->data << " deleted from the list " << endl;
+		free(temp);
+		start->link = nullptr;
+	}
+	node *p = start;
+	while (p->link != nullptr)
+	{
+		if (p->link->data == value)
+		{
+			temp = p->link;
+			p->link = temp->link;
+			free(temp);
+			return;
+		}
+		p = p->link;
+	}
+}
 
 node *LinkedList::CreateNode(int ele)
 {
@@ -105,6 +180,8 @@ int main()
 		cout << "2. Insert a node at end" << endl;
 		cout << "3. Display List" << endl;
 		cout << "4. Length of Linked List" << endl;
+		cout << "5. Delete a node based on value" << endl;
+		cout << "6. Delete a node at end" << endl;
 		cout << "8. Exit " << endl;
 		cout << "Enter your choice" << endl;
 		cin >> choice;
@@ -118,10 +195,12 @@ int main()
 			break;
 		case 3: objList.DisplayList();
 			break;
-		/*case 4: objList.LengthOfList();
+		case 4: objList.LengthOfList();
 			break;
-		case 5:objList.ReverseList();
-			break;*/
+		case 5:objList.DeleteNode();
+			break;
+		case 6:objList.DeleteNodeAtEnd();
+			break;
 		case 8: exit(0);
 			break;
 		default:
