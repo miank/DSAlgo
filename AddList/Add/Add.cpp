@@ -127,7 +127,7 @@ public:
 	{
 		node1 *temp1 = start1;
 		node2 *temp2 = start2;
-		int carry(0), sum(0), total(0), result(0);
+		int carry(0), total(0), result(0);
 
 		while (temp1 != nullptr || temp2 != nullptr)
 		{
