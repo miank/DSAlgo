@@ -17,6 +17,12 @@ struct node2
 	node2 *next;
 }*start2;
 
+struct node3
+{
+	int data;
+	node3 *next;
+}*start3;
+
 class LinkedList
 {
 public:
@@ -101,6 +107,22 @@ public:
 		return;
 	}
 
+	void DisplayList()
+	{
+		if (start3 == nullptr)
+		{
+			cout << "Linked List is empty ";
+			return;
+		}
+		node3 *temp = start3;
+		while (temp != nullptr)
+		{
+			cout << temp->data << endl;
+			temp = temp->next;
+		}
+		return;
+	}
+
 	void AddTwoList()
 	{
 		node1 *temp1 = start1;
@@ -112,10 +134,32 @@ public:
 			result = temp1->data + temp2->data + carry;
 			total = result % 10;
 			carry = (result >= 10) ? 1 : 0;
-			sum = sum + total;
+			TotalList(total);
 			temp1 = temp1->next;
 			temp2 = temp2->next;
 		}
+	}
+
+	void TotalList(int value)
+	{
+		node3 *newNode = new node3;
+		if (start3 == nullptr)
+		{
+			newNode->data = value;
+			start3 = newNode;
+			start3->next = nullptr;
+			return;
+		}
+		node3 *temp = start3;
+		newNode->data = value;
+		while (temp->next != nullptr)
+		{
+			temp = temp->next;
+		}
+		temp->next = newNode;
+		newNode->next = nullptr;
+
+		//cout << newNode->data << " inserted successfully in list3 " << endl;
 	}
 };
 
@@ -132,7 +176,8 @@ int main()
 		cout << "3. Display List 1" << endl;
 		cout << "4. Display List 2" << endl;
 		cout << "5. Add two list " << endl;
-		cout << "6. Exit " << endl;
+		cout << "6. Add two list " << endl;
+		cout << "7. Exit " << endl;
 		cout << "Enter your choice" << endl;
 		cin >> choice;
 
@@ -148,7 +193,9 @@ int main()
 			break;
 		case 5: objList.AddTwoList();
 			break;
-		case 6: exit(0);
+		case 6: objList.DisplayList();
+			break;
+		case 7: exit(0);
 			break;
 		default:
 			cout << "Error in choice" << endl;
