@@ -139,6 +139,7 @@ void LinkedList::InsertFront()
 	{
 		start = newNode;
 		start->link = nullptr;
+		return;
 	}
 	else
 	{
@@ -159,6 +160,7 @@ void LinkedList::InsertEnd()
 	{
 		start = newNode;
 		start->link = nullptr;
+		return;
 	}
 	node *temp = start;
 	while (temp->link != nullptr)
