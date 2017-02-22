@@ -8,7 +8,6 @@ using namespace std;
 
 class Queue
 {
-	
 public:
 	void push(int ele);
 	int pop();
