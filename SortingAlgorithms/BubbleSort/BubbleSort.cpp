@@ -7,28 +7,20 @@ using namespace std;
 
 int main()
 {
-	int size(0), flag = 0;
 	cout << "Bubble Sort " << endl;
-	cout << "Enter the size " << endl;
-	cin >> size;
-	int *arr = new int[size];
 
-	cout << "The elements before sorting the array are " << endl;
+	int arr[] = { 10, 50, 21, 2, 6, 66, 802, 75, 24, 170 };
+	int size = sizeof(arr) / sizeof(arr[0]);
+
 	for (int i = 0; i < size; i++)
 	{
-		cin >> arr[i];
-	}
-	for (int i = 0; i < size; i++)
-	{
-		flag = 0;
-		for (int j = 0; j < size - 2; j++)
+		for (int j = 0; j < size -i - 1; j++)
 		{
-			if (arr[j] < arr[j + 1])  // For ascending >
+			if (arr[j] > arr[j + 1])  // For ascending >
 			{
 				int temp = arr[j];
 				arr[j] = arr[j + 1];
 				arr[j + 1] = temp;
-				flag = 1;
 			}
 		}	
 	}
